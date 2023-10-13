@@ -14,7 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->text('detail');
+            $table->double('price');
+            $table->integer('stock');
+            $table->double('discount');
             $table->timestamps();
         });
     }
