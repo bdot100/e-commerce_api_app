@@ -24,6 +24,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth:api')->group(function () {
+    Route::post('/products', 'ProductController@store');
+    Route::put('/products', 'ProductController@update');
+});
 
 Route::namespace('App\Http\Controllers')->group(function () {
     Route::apiResource('/products', 'ProductController');
